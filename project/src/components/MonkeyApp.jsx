@@ -124,10 +124,13 @@ function MonkeyApp() {
               icon={isDarkMode ? <SunOutlined /> : <MoonOutlined />}
               onClick={() => setIsDarkMode(!isDarkMode)}
               size="large"
+              style={{
+                color: isDarkMode ? '#fde047' : '#4b5563'
+              }}
               className={`transition-colors duration-300 ${
                 isDarkMode 
-                  ? 'text-yellow-300 hover:text-yellow-200 hover:bg-gray-700' 
-                  : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'
+                  ? 'hover:bg-gray-700' 
+                  : 'hover:bg-gray-100'
               }`}
             />
           </div>
