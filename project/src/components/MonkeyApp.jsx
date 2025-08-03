@@ -136,7 +136,7 @@ function MonkeyApp() {
           </div>
           <h1 className={`text-5xl font-bold mb-4 transition-colors duration-300 ${
             isDarkMode ? 'text-gray-100' : 'text-gray-800'
-          }`}>🦍 Ape Kingdom 🐒</h1>
+          }`}>🐾 Furry Critter Kingdom 🦎</h1>
           <p className={`text-xl transition-colors duration-300 ${
             isDarkMode ? 'text-gray-300' : 'text-gray-600'
           }`}>Discover and learn about amazing primates from around the world!</p>
