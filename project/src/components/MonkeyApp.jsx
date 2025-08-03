@@ -113,7 +113,7 @@ function MonkeyApp() {
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 p-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">🐵 Monkey Kingdom 🐒</h1>
+          <h1 className="text-5xl font-bold text-gray-800 mb-4">🦍 Ape Kingdom 🐒</h1>
           <p className="text-xl text-gray-600">Discover and learn about amazing primates from around the world!</p>
         </div>
 
