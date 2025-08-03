@@ -113,12 +113,16 @@ function MonkeyApp() {
   return (
     <div className={`min-h-screen p-4 transition-colors duration-300 ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-gray-900 to-gray-800' 
-        : 'bg-gradient-to-br from-amber-50 to-orange-100'
+        ? 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800' 
+        : 'bg-gradient-to-br from-blue-100 via-purple-50 to-pink-100'
     }`}>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 relative">
-          <div className="absolute top-0 right-0">
+        <div className={`text-center mb-8 relative p-6 rounded-2xl backdrop-blur-md border transition-all duration-300 ${
+          isDarkMode 
+            ? 'bg-white/10 border-white/20 shadow-lg' 
+            : 'bg-white/40 border-white/60 shadow-xl'
+        }`}>
+          <div className="absolute top-4 right-4">
             <Button
               type="text"
               icon={isDarkMode ? <SunOutlined /> : <MoonOutlined />}
@@ -127,22 +131,26 @@ function MonkeyApp() {
               style={{
                 color: isDarkMode ? '#fde047' : '#4b5563'
               }}
-              className={`transition-colors duration-300 ${
+              className={`transition-all duration-300 rounded-full backdrop-blur-sm ${
                 isDarkMode 
-                  ? 'hover:bg-gray-700' 
-                  : 'hover:bg-gray-100'
+                  ? 'hover:bg-white/20' 
+                  : 'hover:bg-white/50'
               }`}
             />
           </div>
           <h1 className={`text-5xl font-bold mb-4 transition-colors duration-300 ${
-            isDarkMode ? 'text-gray-100' : 'text-gray-800'
+            isDarkMode ? 'text-white' : 'text-gray-800'
           }`}>🐾 Furry Critter Kingdom 🦎</h1>
           <p className={`text-xl transition-colors duration-300 ${
-            isDarkMode ? 'text-gray-300' : 'text-gray-600'
+            isDarkMode ? 'text-gray-200' : 'text-gray-700'
           }`}>Discover and learn about amazing primates from around the world!</p>
         </div>
 
-        <div className="mb-6 flex flex-col md:flex-row gap-4 items-center">
+        <div className={`mb-6 flex flex-col md:flex-row gap-4 items-center p-4 rounded-xl backdrop-blur-md border transition-all duration-300 ${
+          isDarkMode 
+            ? 'bg-white/5 border-white/10' 
+            : 'bg-white/30 border-white/40'
+        }`}>
           <Input.Search
             placeholder="Search monkeys by name or species..."
             value={searchTerm}
@@ -168,7 +176,11 @@ function MonkeyApp() {
             icon={<PlusOutlined />}
             onClick={handleAddMonkey}
             size="large"
-            className="bg-gradient-to-r from-orange-400 to-red-500 border-0"
+            className={`border-0 backdrop-blur-sm transition-all duration-300 ${
+              isDarkMode 
+                ? 'bg-gradient-to-r from-purple-500/80 to-pink-500/80 hover:from-purple-600/90 hover:to-pink-600/90' 
+                : 'bg-gradient-to-r from-blue-500/80 to-purple-500/80 hover:from-blue-600/90 hover:to-purple-600/90'
+            }`}
           >
             Add Monkey
           </Button>
@@ -178,16 +190,16 @@ function MonkeyApp() {
           {filteredMonkeys.map((monkey) => (
             <Col xs={24} sm={12} lg={8} xl={6} key={monkey._id}>
               <Card
-                className={`h-full shadow-lg hover:shadow-xl transition-all duration-300 ${
+                className={`h-full shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-md border rounded-2xl overflow-hidden ${
                   isDarkMode 
-                    ? 'bg-gray-800 border-gray-700' 
-                    : 'bg-white border-gray-200'
+                    ? 'bg-white/10 border-white/20 hover:bg-white/15' 
+                    : 'bg-white/50 border-white/60 hover:bg-white/60'
                 }`}
                 cover={
-                  <div className={`h-48 flex items-center justify-center transition-colors duration-300 ${
+                  <div className={`h-48 flex items-center justify-center transition-all duration-300 backdrop-blur-sm ${
                     isDarkMode 
-                      ? 'bg-gradient-to-br from-gray-700 to-gray-600' 
-                      : 'bg-gradient-to-br from-yellow-200 to-orange-300'
+                      ? 'bg-gradient-to-br from-purple-600/50 to-pink-600/50' 
+                      : 'bg-gradient-to-br from-blue-300/60 to-purple-300/60'
                   }`}>
                     {monkey.imageUrl ? (
                       <img src={monkey.imageUrl} alt={monkey.name} className="w-full h-full object-cover" />
@@ -213,18 +225,18 @@ function MonkeyApp() {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <h3 className={`text-xl font-bold transition-colors duration-300 ${
-                      isDarkMode ? 'text-gray-100' : 'text-gray-800'
+                      isDarkMode ? 'text-white' : 'text-gray-800'
                     }`}>{monkey.name}</h3>
                     {monkey.isEndangered && <HeartOutlined style={{ color: '#ff4d4f' }} />}
                   </div>
                   
-                  <Tag color={getSpeciesColor(monkey.species)} className="text-sm">
+                  <Tag color={getSpeciesColor(monkey.species)} className="text-sm backdrop-blur-sm">
                     {monkey.species}
                   </Tag>
                   
                   {monkey.age && (
                     <p className={`transition-colors duration-300 ${
-                      isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                      isDarkMode ? 'text-gray-200' : 'text-gray-700'
                     }`}>
                       <strong>Age:</strong> {monkey.age} years
                     </p>
@@ -232,7 +244,7 @@ function MonkeyApp() {
                   
                   {monkey.habitat && (
                     <p className={`transition-colors duration-300 ${
-                      isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                      isDarkMode ? 'text-gray-200' : 'text-gray-700'
                     }`}>
                       <strong>Habitat:</strong> {monkey.habitat}
                     </p>
@@ -240,17 +252,17 @@ function MonkeyApp() {
                   
                   {monkey.favoriteFood && (
                     <p className={`transition-colors duration-300 ${
-                      isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                      isDarkMode ? 'text-gray-200' : 'text-gray-700'
                     }`}>
                       <strong>Favorite Food:</strong> {monkey.favoriteFood}
                     </p>
                   )}
                   
                   {monkey.funFact && (
-                    <p className={`text-sm italic p-2 rounded transition-colors duration-300 ${
+                    <p className={`text-sm italic p-3 rounded-lg backdrop-blur-sm border transition-all duration-300 ${
                       isDarkMode 
-                        ? 'text-gray-400 bg-gray-700' 
-                        : 'text-gray-500 bg-yellow-50'
+                        ? 'text-gray-300 bg-white/10 border-white/20' 
+                        : 'text-gray-600 bg-white/40 border-white/50'
                     }`}>
                       💡 {monkey.funFact}
                     </p>
@@ -262,13 +274,17 @@ function MonkeyApp() {
         </Row>
 
         {filteredMonkeys.length === 0 && (
-          <div className="text-center py-16">
+          <div className={`text-center py-16 mx-auto max-w-md rounded-2xl backdrop-blur-md border transition-all duration-300 ${
+            isDarkMode 
+              ? 'bg-white/10 border-white/20' 
+              : 'bg-white/40 border-white/60'
+          }`}>
             <div className="text-6xl mb-4">🙈</div>
             <h3 className={`text-2xl font-semibold mb-2 transition-colors duration-300 ${
-              isDarkMode ? 'text-gray-300' : 'text-gray-600'
+              isDarkMode ? 'text-white' : 'text-gray-800'
             }`}>No monkeys found</h3>
             <p className={`transition-colors duration-300 ${
-              isDarkMode ? 'text-gray-400' : 'text-gray-500'
+              isDarkMode ? 'text-gray-200' : 'text-gray-600'
             }`}>Try adjusting your search or add some monkeys to get started!</p>
           </div>
         )}
