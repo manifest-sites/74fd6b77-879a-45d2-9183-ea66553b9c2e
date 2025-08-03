@@ -126,7 +126,7 @@ function MonkeyApp() {
               size="large"
               className={`transition-colors duration-300 ${
                 isDarkMode 
-                  ? 'text-yellow-400 hover:text-yellow-300 hover:bg-gray-700' 
+                  ? 'text-yellow-300 hover:text-yellow-200 hover:bg-gray-700' 
                   : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'
               }`}
             />
